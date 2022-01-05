@@ -1,3 +1,4 @@
+//interface declaration
 interface Resource{
     btn:any,
     temp:any,
@@ -192,7 +193,8 @@ let rand=()=> res.output.value=Math.random()
 let ceil=()=> res.output.value=Math.ceil(res.output.value)
 //floor function
 let floor=()=> res.output.value=Math.floor(res.output.value)
-//memory function
+//**********************Memory function**********************
+//interface declaration
 interface memories{
     memory:string[],
     m_value:number,
