@@ -20,13 +20,13 @@ for (res.item of res.btn) {
         if (res.btntext == '-') {
             firstdigit('-');
         }
-        if (res.btntext == 'mode') {
-            console.log('mode');
-            firstdigit('%');
-        }
         if (res.btntext == '.') {
             console.log('dot');
             firstdigit('.');
+        }
+        if (res.btntext == 'mode') {
+            console.log('mode');
+            firstdigit('%');
         }
         res.output.value += res.btntext;
     });
@@ -48,10 +48,10 @@ function duplication() {
     var len = res.output.value.substr(res.output.value.length - 1, 1);
     var lastchar = res.output.value.length - 1;
     if (!isNaN(len)) {
-        console.log("not a number");
+        console.log("number");
     }
     else {
-        console.log("number");
+        console.log("not a number");
         if (!(len.charAt(lastchar) == '+' || len.charAt(lastchar) == '-' || len.charAt(lastchar) == '*' || len.charAt(lastchar) == '/' || len.charAt(lastchar) == '%' || len.charAt(lastchar) == '(' || len.charAt(lastchar) == ')')) {
             console.log('inner');
             var len1 = res.output.value.substr(0, res.output.value.length - 1);
@@ -120,8 +120,6 @@ let sqrt = () => res.output.value = (res.output.value * res.output.value);
 let powe = () => res.output.value = Math.pow(10, res.output.value);
 //power function x to y
 let pow = () => res.output.value = Math.pow(res.output.value, res.output.value);
-//mod function 
-let mod = () => res.output.value = `${res.output.value}%`;
 //exp function
 let exp = () => res.output.value = Math.exp(res.output.value);
 //1/x function
