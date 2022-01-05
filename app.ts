@@ -56,7 +56,6 @@ let firstdigit=(op:string)=>{
         duplication();
     }
 }
-
 //this is functon check for oprators occurrence
 function duplication(){
     var len:any=res.output.value.substr(res.output.value.length-1,1);
@@ -107,14 +106,10 @@ function backspc()
 }
 // if you are click on body anywhere the focus is only on textbox
 let foc = ()=>{ return res.output.focus()};
-
-
 //pi function
 let pi=()=>{ return res.output.value= 3.14159265359};
-
 //e function
 let e=()=>{ return res.output.value=2.71828182845};
-
 //fact function
 let fac=()=>{
     var i,number,f;
@@ -130,71 +125,55 @@ let fac=()=>{
 let ln=()=>{ return res.output.value=Math.log(res.output.value) }
 //log function
 let log =()=>{return res.output.value=Math.log(res.output.value*10)}
-
 //root function
 let root=()=>{ return res.output.value=Math.sqrt(res.output.value)}
-
 //sqrt function
 let sqrt=()=>res.output.value=(res.output.value*res.output.value)
-
 //power function 10 to x
 let powe=()=> res.output.value=Math.pow(10,res.output.value)
-
 //power function x to y
 let pow=()=> res.output.value=Math.pow(res.output.value,res.output.value)
-
 //exp function
 let exp=()=> res.output.value=Math.exp(res.output.value)
-
 //1/x function
 let divide=()=>res.output.value=`1/${res.output.value}`
-
 //abs function
 let abs = ()=> res.output.value=Math.abs(res.output.value)
 var flag=0;
 //neg+positive operations
 let posneg=()=>{
-
     if(flag==0){
         if(res.output.value==0){console.log('null value')}else{
             res.output.value=`-${res.output.value}`
             console.log('-');
-            flag=1;
-        }
+            flag=1;}
     }else{
         res.output.value=`${res.output.value.substr(1,res.output.value.length-1)}`
             console.log('+');
-            flag=0;
-    }
-
+            flag=0;}
 }
-
 //sin function
 let sin=()=>{
     var deg = res.output.value * Math.PI / 180;
     console.log(deg);
     res.output.value=Math.sin(deg);
 }
-
 //cos function
 let cos=()=> {
     var deg = res.output.value * Math.PI / 180;
     res.output.value=Math.cos(deg);
 }
-
 //tan function
 let tan=()=>{
     var deg = res.output.value * Math.PI / 180;
     res.output.value=Math.tan(deg);
 } 
-
 //sec function
 let sec=()=>{
     var deg = res.output.value * Math.PI / 180;
     console.log(deg);
     res.output.value=(1/(Math.sin(deg)));
 }
-
 //csc function
 let csc=()=>{
     var deg = res.output.value * Math.PI / 180;
@@ -207,16 +186,12 @@ let cot=()=>{
     console.log(deg);
     res.output.value=(1/(Math.cos(deg)));
 }
-
 //random function
 let rand=()=> res.output.value=Math.random()
-
 //ceil function
 let ceil=()=> res.output.value=Math.ceil(res.output.value)
-
 //floor function
 let floor=()=> res.output.value=Math.floor(res.output.value)
-
 //memory function
 interface memories{
     memory:string[],
@@ -232,7 +207,6 @@ resmemory.m_value=0;
 resmemory.ms_remove=0;
 resmemory.btnmc=document.getElementById('btnmc');
 resmemory.btnmr=document.getElementById('btnmr');
-
 //this is memory store function which is store a value in array
 let ms=(val:string) => {
     resmemory.btnmc.disabled =false;
