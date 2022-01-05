@@ -1,0 +1,246 @@
+//called interface
+var res = {};
+res.btn = document.querySelectorAll('.bn');
+res.temp = document.getElementById('temp');
+res.output = document.getElementById('screen');
+//display button value when user press button
+for (var _i = 0, _a = res.btn; _i < _a.length; _i++) {
+    res.item = _a[_i];
+    res.item.addEventListener('click', function (e) {
+        res.btntext = e.target.innerText;
+        if (res.btntext == '×') {
+            firstdigit('*');
+        }
+        if (res.btntext == '÷') {
+            firstdigit('/');
+        }
+        if (res.btntext == '+') {
+            firstdigit('+');
+        }
+        if (res.btntext == '-') {
+            firstdigit('-');
+        }
+        if (res.btntext == 'mode') {
+            console.log('mode');
+            firstdigit('%');
+        }
+        if (res.btntext == '.') {
+            console.log('dot');
+            firstdigit('.');
+        }
+        res.output.value += res.btntext;
+    });
+}
+//check first element is number or not 
+var firstdigit = function (op) {
+    if (!res.output.value) {
+        console.log("screeen value:-", +res.output.value);
+        res.btntext = "";
+    }
+    else {
+        res.btntext = op;
+        //check for multipal occurrence
+        duplication();
+    }
+};
+//this is functon check for oprators occurrence
+function duplication() {
+    var len = res.output.value.substr(res.output.value.length - 1, 1);
+    var lastchar = res.output.value.length - 1;
+    if (!isNaN(len)) {
+        console.log("not a number");
+    }
+    else {
+        console.log("number");
+        if (!(len.charAt(lastchar) == '+' || len.charAt(lastchar) == '-' || len.charAt(lastchar) == '*' || len.charAt(lastchar) == '/' || len.charAt(lastchar) == '%' || len.charAt(lastchar) == '(' || len.charAt(lastchar) == ')')) {
+            console.log('inner');
+            var len1 = res.output.value.substr(0, res.output.value.length - 1);
+            res.output.value = len1;
+        }
+    }
+}
+//opeartion perform when user click equal butoon
+var equal = function () {
+    res.temp.innerText = res.output.value;
+    console.log(res.temp.innerHTML);
+    res.output.value = eval(res.output.value);
+};
+//this is function which is indicates that when user press any key
+function keycode(e) {
+    //the e.key==13 which is enter key value 
+    if (e.keyCode == 13) {
+        res.temp.innerText = res.output.value;
+        console.log(res.temp.innerText);
+        res.output.value = eval(res.output.value);
+    }
+    //the e.key==08 which is backspace key value 
+    if (e.keyCode == 08) {
+        res.output.value = res.output.value.substr(0, res.output.value.length - 1);
+        res.temp.innerText = "";
+    }
+    if (e.keyCode >= 33 && e.keyCode <= 47 || e.keyCode == 59) {
+        console.log('block');
+        e.preventDefault();
+    }
+    if (e.keyCode >= 64 && e.keyCode <= 122) {
+        console.log("".concat(e.keyCode, " Is not valid"));
+        e.preventDefault();
+    }
+}
+function backspc() {
+    res.output.value = res.output.value.substr(0, res.output.value.length - 1);
+    res.temp.innerText = "";
+}
+// if you are click on body anywhere the focus is only on textbox
+var foc = function () { return res.output.focus(); };
+//pi function
+var pi = function () { return res.output.value = 3.14159265359; };
+//e function
+var e = function () { return res.output.value = 2.71828182845; };
+//fact function
+var fac = function () {
+    var i, number, f;
+    f = 1;
+    number = res.output.value;
+    for (i = 1; i <= number; i++) {
+        f = f * i;
+    }
+    i = i - 1;
+    res.output.value = f;
+};
+//ln function
+var ln = function () { return res.output.value = Math.log(res.output.value); };
+//log function
+var log = function () { return res.output.value = Math.log(res.output.value * 10); };
+//root function
+var root = function () { return res.output.value = Math.sqrt(res.output.value); };
+//sqrt function
+var sqrt = function () { return res.output.value = (res.output.value * res.output.value); };
+//power function 10 to x
+var powe = function () { return res.output.value = Math.pow(10, res.output.value); };
+//power function x to y
+var pow = function () { return res.output.value = Math.pow(res.output.value, res.output.value); };
+//mod function 
+var mod = function () { return res.output.value = "".concat(res.output.value, "%"); };
+//exp function
+var exp = function () { return res.output.value = Math.exp(res.output.value); };
+//1/x function
+var divide = function () { return res.output.value = "1/".concat(res.output.value); };
+//abs function
+var abs = function () { return res.output.value = Math.abs(res.output.value); };
+var flag = 0;
+//neg+positive operations
+var posneg = function () {
+    if (flag == 0) {
+        if (res.output.value == 0) {
+            console.log('null value');
+        }
+        else {
+            res.output.value = "-".concat(res.output.value);
+            console.log('-');
+            flag = 1;
+        }
+    }
+    else {
+        res.output.value = "".concat(res.output.value.substr(1, res.output.value.length - 1));
+        console.log('+');
+        flag = 0;
+    }
+};
+//sin function
+var sin = function () {
+    var deg = res.output.value * Math.PI / 180;
+    console.log(deg);
+    res.output.value = Math.sin(deg);
+};
+//cos function
+var cos = function () {
+    var deg = res.output.value * Math.PI / 180;
+    res.output.value = Math.cos(deg);
+};
+//tan function
+var tan = function () {
+    var deg = res.output.value * Math.PI / 180;
+    res.output.value = Math.tan(deg);
+};
+//sec function
+var sec = function () {
+    var deg = res.output.value * Math.PI / 180;
+    console.log(deg);
+    res.output.value = (1 / (Math.sin(deg)));
+};
+//csc function
+var csc = function () {
+    var deg = res.output.value * Math.PI / 180;
+    console.log(deg);
+    res.output.value = (1 / (Math.cos(deg)));
+};
+//csc function
+var cot = function () {
+    var deg = res.output.value * Math.PI / 180;
+    console.log(deg);
+    res.output.value = (1 / (Math.cos(deg)));
+};
+//random function
+var rand = function () { return res.output.value = Math.random(); };
+//ceil function
+var ceil = function () { return res.output.value = Math.ceil(res.output.value); };
+//floor function
+var floor = function () { return res.output.value = Math.floor(res.output.value); };
+//access interface throught fun
+var resmemory = {};
+resmemory.m_value = 0;
+resmemory.ms_remove = 0;
+resmemory.btnmc = document.getElementById('btnmc');
+resmemory.btnmr = document.getElementById('btnmr');
+//this is memory store function which is store a value in array
+var ms = function (val) {
+    resmemory.btnmc.disabled = false;
+    resmemory.btnmr.disabled = false;
+    resmemory.memory.push(val);
+    for (resmemory.i = 0; resmemory.i < resmemory.memory.length; resmemory.i++) {
+        // m_value =+ memory[i];
+        console.log(resmemory.memory[resmemory.i]);
+    }
+};
+//this is memory add function which is added a value in array
+var madd = function (val) {
+    resmemory.memory.push(val);
+    for (resmemory.i = 0; resmemory.i < resmemory.memory.length; resmemory.i++) {
+        //m_value += memory[i];
+        console.log(resmemory.memory[resmemory.i]);
+    }
+};
+//sum()
+var sum = function () {
+    for (resmemory.i = 0; resmemory.i < resmemory.memory.length; resmemory.i++) {
+        resmemory.m_value += parseInt(resmemory.memory[resmemory.i]);
+    }
+    return resmemory.m_value;
+};
+//this is memory remove function which is remove a value in array from last
+var mrev = function (val) {
+    console.log(val);
+    sum();
+    resmemory.ms_remove = ((resmemory.m_value) - (parseInt(val)));
+};
+//this is memory recall function which is display a number from array
+var mrecall = function () {
+    res.output.value = '';
+    sum();
+    console.log(resmemory.ms_remove);
+    if (resmemory.ms_remove) {
+        res.output.value = resmemory.ms_remove;
+        resmemory.ms_remove = 0;
+    }
+    else
+        res.output.value = resmemory.m_value;
+};
+//this is memory clear function
+var mclear = function () {
+    res.output.value = '';
+    resmemory.btnmc.disabled = true;
+    resmemory.btnmr.disabled = true;
+    resmemory.memory = [];
+    console.log(resmemory.memory);
+};
