@@ -187,12 +187,14 @@ var ceil = function () { return res.output.value = Math.ceil(res.output.value); 
 var floor = function () { return res.output.value = Math.floor(res.output.value); };
 //access interface throught fun
 var resmemory = {};
+resmemory.memory = [];
 resmemory.m_value = 0;
 resmemory.ms_remove = 0;
 resmemory.btnmc = document.getElementById('btnmc');
 resmemory.btnmr = document.getElementById('btnmr');
 //this is memory store function which is store a value in array
 var ms = function (val) {
+    console.log('callled');
     resmemory.btnmc.disabled = false;
     resmemory.btnmr.disabled = false;
     resmemory.memory.push(val);

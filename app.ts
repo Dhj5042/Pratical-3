@@ -205,12 +205,14 @@ interface memories{
 }
 //access interface throught fun
 var resmemory=<memories>{};
+resmemory.memory=[];
 resmemory.m_value=0;
 resmemory.ms_remove=0;
 resmemory.btnmc=document.getElementById('btnmc');
 resmemory.btnmr=document.getElementById('btnmr');
 //this is memory store function which is store a value in array
-let ms=(val:string) => {
+let ms=(val:any) => {
+    console.log('callled');
     resmemory.btnmc.disabled =false;
     resmemory.btnmr.disabled=false;
     resmemory.memory.push(val);
